@@ -1,4 +1,4 @@
-import Item from "../Item/Item";
+import FoodItem from "../FoodItem/FoodItem";
 import './ItemList.css'
 
 function ItemList({ itemList }) {
@@ -6,7 +6,7 @@ function ItemList({ itemList }) {
     <div className="cards">
       <ul className="cards-items">
         {itemList.map((item) => {
-          <Item key={item.id} item={item} />;
+          <FoodItem key={item.id} item={item} />;
         })}
       </ul>
     </div>

@@ -76,7 +76,7 @@ function App() {
         <ShoppingButton />
       </main>
       {/* card list */}
-      <ItemList ItemList={itemList} />
+      <ItemList itemList={itemList} />
     </div>
   );
 }

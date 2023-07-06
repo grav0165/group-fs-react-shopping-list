@@ -1,19 +1,18 @@
-import { useState } from "react";
-import "./Item.css";
+// import { useState } from "react";
+import "./FoodItem.css";
 
 function Item({ item }) {
-  const [buy, setBuy] = useState(false);
+//   const [buy, setBuy] = useState(false);
 //   const [remove, setRemove] = useState(true);
 
-  const handleButton = () => {
-    if (item.purchased) {
-      setBuy(!buy);
-    // } else {
-    //   setRemove(!remove);
-    }
-  };
+//   const handleButton = () => {
+//     if (item.purchased) {
+//       setBuy(!buy);
+//     // } else {
+//     //   setRemove(!remove);
+//     }
+//   };
 
-  console.log(item.purchased, setBuy, setRemove);
 
   return (
     <li className="item">
@@ -22,7 +21,7 @@ function Item({ item }) {
         <p className="item-quantity">{item.quantity}</p>
         <span className="item-unit">{item.unit}</span>
       </div>
-      <div className="btn">
+      {/* <div className="btn">
         <button
           className={item.purchased === true ? "buyBtn" : "transparent"}
           onClick={handleButton}
@@ -35,7 +34,7 @@ function Item({ item }) {
         >
           Remove
         </button>
-      </div>
+      </div> */}
     </li>
   );
 }
