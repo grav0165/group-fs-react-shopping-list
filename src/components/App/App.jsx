@@ -68,7 +68,8 @@ function App() {
                 <ShoppingButton />
                 <h2>Shopping List</h2>
             </main>
-        
+        </div>
+    )cd 
     
 }
 
