@@ -1,15 +1,11 @@
-import React from 'react';
-import axios from 'axios';
-
-import Header from '../Header/Header.jsx';
-import ShoppingButton from '../ShoppingButton/ShoppingButton.jsx'
-import ItemForm from '../ItemForm/ItemForm.jsx'
-import './App.css';
-// import needed libraries for React routes
-// import {useState, useEffect} from 'react';
-// import axios from 'axios';
-
-
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Header from "../Header/Header.jsx";
+import ShoppingButton from "../ShoppingButton/ShoppingButton.jsx";
+import ItemForm from "../ItemForm/ItemForm.jsx";
+import ItemList from "../ItemList/ItemList";
+import "./App.css";
 
 function App() {
     // arrow function - POST route that collects data from ItemForm
@@ -28,20 +24,20 @@ function App() {
         })
     }
 
-    const deleteItem = (idToDelete) => {
-        axios({
-            method: 'DELETE',
-            url: `/item/`
-        })
-        .then( response => {
-            console.log('Deleted an item');
-            // getItems()
-        })
-        .catch( error => {
-            console.log('Error in DELETE request: ', error);
-            alert('Error in deleting an item');
-        })
-    }
+  const deleteItem = (idToDelete) => {
+    axios({
+      method: "DELETE",
+      url: `/item/`,
+    })
+      .then((response) => {
+        console.log("Deleted an item");
+        // getItems()
+      })
+      .catch((error) => {
+        console.log("Error in DELETE request: ", error);
+        alert("Error in deleting an item");
+      });
+  };
 
     return (
         <div className="App">
@@ -72,8 +68,8 @@ function App() {
                 <ShoppingButton />
                 <h2>Shopping List</h2>
             </main>
-        </div>
-    );
+        
+    
 }
 
 export default App;
