@@ -1,68 +1,84 @@
-import React from 'react';
-import axios from 'axios';
-
-import Header from '../Header/Header.jsx';
-import ShoppingButton from '../ShoppingButton/ShoppingButton.jsx'
-import ItemForm from '../ItemForm/ItemForm.jsx'
-import './App.css';
-// import needed libraries for React routes
-// import {useState, useEffect} from 'react';
-// import axios from 'axios';
-
-
+import React from "react";
+import axios from "axios";
+import { useState, useEffect } from "react";
+import Header from "../Header/Header.jsx";
+import ShoppingButton from "../ShoppingButton/ShoppingButton.jsx";
+import ItemForm from "../ItemForm/ItemForm.jsx";
+import ItemList from "../ItemList/ItemList";
+import "./App.css";
 
 function App() {
-    // arrow function - POST route that collects data from ItemForm
-    const addItem = (newShoppingItem) => {
-        axios({
-            method: 'POST',
-            url: '/item',
-            data: newShoppingItem
-        })
-        .then(response => {
-            //call GET route function here!!
-        })
-        .catch(error => {
-            alert('Error POSTing new item to database from addItem: ', error)
-            console.log(error);
-        })
-    }
+  const [itemList, setItemList] = useState([]);
 
-    const deleteItem = (idToDelete) => {
-        axios({
-            method: 'DELETE',
-            url: `/item/`
-        })
-        .then( response => {
-            console.log('Deleted an item');
-            // getItems()
-        })
-        .catch( error => {
-            console.log('Error in DELETE request: ', error);
-            alert('Error in deleting an item');
-        })
-    }
+  // GET
+  const getItems = () => {
+    axios({
+      method: "GET",
+      url: "/item",
+    })
+      .then((response) => {
+        console.log("Response: ", response);
+        console.log("Response.data: ", response.data);
 
-    return (
-        <div className="App">
-            <Header />
-            
-            {/* GET content */}
+        setItemList(response.data);
+      })
+      .catch((error) => {
+        console.log("Error on GET: ", error);
+      });
+  };
 
-            {/* POST content */}
-            <ItemForm 
-            addItem={addItem}
-            />
+  // useEffect
+  useEffect(() => {
+    getItems();
+  }, []);
 
-            {/* PUT content */}
+  // arrow function - POST route that collects data from ItemForm
+  const addItem = (newShoppingItem) => {
+    axios({
+      method: "POST",
+      url: "/item",
+      data: newShoppingItem,
+    })
+      .then((response) => {
+        //call GET route function here!!
+      })
+      .catch((error) => {
+        alert("Error POSTing new item to database from addItem: ", error);
+        console.log(error);
+      });
+  };
 
-            {/* DELETE content */}
-            <main>
-                <p>Under Construction...</p>
-                <ShoppingButton />
-            </main>
-        </div>
-    );
+  const deleteItem = (idToDelete) => {
+    axios({
+      method: "DELETE",
+      url: `/item/`,
+    })
+      .then((response) => {
+        console.log("Deleted an item");
+        // getItems()
+      })
+      .catch((error) => {
+        console.log("Error in DELETE request: ", error);
+        alert("Error in deleting an item");
+      });
+  };
+
+  return (
+    <div className="App">
+      <Header />
+      {/* title */}
+      {/* Form */}
+      <ItemForm addItem={addItem} />
+      {/* title */}
+      {/* button */}
+      <main>
+        <p>Under Construction...</p>
+        <ShoppingButton />
+      </main>
+      {/* card list */}
+      <ItemList ItemList={itemList} />
+    </div>
+  );
 }
 
 export default App;
