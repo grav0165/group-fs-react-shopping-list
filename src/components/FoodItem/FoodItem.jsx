@@ -1,43 +1,41 @@
 import { useState } from "react";
 import "./Item.css";
 
-function Item({ item }) {
-  const [buy, setBuy] = useState(false);
-//   const [remove, setRemove] = useState(true);
+function FoodItem(props) {
 
-  const handleButton = () => {
-    if (item.purchased) {
-      setBuy(!buy);
-    // } else {
-    //   setRemove(!remove);
-    }
+  const handleUpdate = () => {
+    console.log('Purchase Button clicked')
+    props.purchaseItem({
+      id: props.item.id
+  })
+  console.log(props.item.id)
   };
 
-  console.log(item.purchased, setBuy, setRemove);
+  const handleDelete = () => {
+    console.log('Delete Button clicked');
+  }
+
+
 
   return (
     <li className="item">
-      <h5>{item.name}</h5>
+      <h5>{props.item.name}</h5>
       <div className="item-amount">
-        <p className="item-quantity">{item.quantity}</p>
-        <span className="item-unit">{item.unit}</span>
+        <p className="item-quantity">{props.item.quantity}</p>
+        <span className="item-unit">{props.item.unit}</span>
       </div>
-      {/* <div className="btn">
-        <button
-          className={item.purchased === true ? "buyBtn" : "transparent"}
-          onClick={handleButton}
+      <div className="btn">
+        <button onClick={handleUpdate}
         >
           Buy
         </button>
-        <button
-          className={item.purchased === false ? "removeBtn" : "transparent"}
-          onClick={handleButton}
+        <button onClick={handleDelete}
         >
           Remove
         </button>
-      </div> */}
+      </div>
     </li>
   );
 }
 
-export default Item;
+export default FoodItem;

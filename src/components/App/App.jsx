@@ -41,12 +41,29 @@ function App() {
     })
       .then((response) => {
         //call GET route function here!!
+        getItems();
       })
       .catch((error) => {
         alert("Error POSTing new item to database from addItem: ", error);
         console.log(error);
       });
   };
+
+  const purchaseItem = (itemToUpdate) => {
+    console.log(itemToUpdate)
+    axios({
+        method: 'PUT',
+        url: `/item/${itemToUpdate.id}`
+    })
+    .then((response) => {
+        console.log('Purchased an item');
+        getItems();
+    })
+    .catch((error) => {
+        alert('Error in UPDATEing item in database: ', error);
+        console.log(error);
+    })
+  }
 
   const deleteItem = (idToDelete) => {
     axios({
@@ -76,7 +93,7 @@ function App() {
         <ShoppingButton />
       </main>
       {/* card list */}
-      <ItemList itemList={itemList} />
+      <ItemList itemList={itemList} purchaseItem={purchaseItem} />
     </div>
   );
 }

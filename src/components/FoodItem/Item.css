@@ -1,12 +1,12 @@
 h5 {
-        text-align: center;
-        font-family: 'Oswald';
-        font-weight: 400px;
+    text-align: center;
+    font-family: 'Oswald';
+    font-weight: 400px;
 }
 
 .item-quantity, .item-unit {
-    text-align: center;
-    font-family: 'Oswald';
+text-align: center;
+font-family: 'Oswald';
 }
 
 .buyBtn {
@@ -14,10 +14,17 @@ background-color: green;
 }
 
 .removeBtn {
-    background-color: red;
+background-color: red;
 }
 
 
 .transparent {
-    background-color: transparent;
+background-color: transparent;
+}
+
+li {
+border: 1px solid black;
+margin: 20px;
+width: 200px;
+height: 200px;
 }
