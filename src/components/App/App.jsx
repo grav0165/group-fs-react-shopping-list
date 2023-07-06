@@ -8,21 +8,62 @@ import ItemList from "../ItemList/ItemList";
 import "./App.css";
 
 function App() {
-    // arrow function - POST route that collects data from ItemForm
-    const addItem = (newShoppingItem) => {
-        axios({
-            method: 'POST',
-            url: '/item',
-            data: newShoppingItem
-        })
-        .then(response => {
-            //call GET route function here!!
-        })
-        .catch(error => {
-            alert('Error POSTing new item to database from addItem: ', error)
-            console.log(error);
-        })
-    }
+  const [itemList, setItemList] = useState([]);
+
+  // GET
+  const getItems = () => {
+    axios({
+      method: "GET",
+      url: "/item",
+    })
+      .then((response) => {
+        console.log("Response: ", response);
+        console.log("Response.data: ", response.data);
+
+        setItemList(response.data);
+      })
+      .catch((error) => {
+        console.log("Error on GET: ", error);
+      });
+  };
+
+  // useEffect
+  useEffect(() => {
+    getItems();
+  }, []);
+
+  // arrow function - POST route that collects data from ItemForm
+  const addItem = (newShoppingItem) => {
+    axios({
+      method: "POST",
+      url: "/item",
+      data: newShoppingItem,
+    })
+      .then((response) => {
+        //call GET route function here!!
+        getItems();
+      })
+      .catch((error) => {
+        alert("Error POSTing new item to database from addItem: ", error);
+        console.log(error);
+      });
+  };
+
+  const purchaseItem = (itemToUpdate) => {
+    console.log(itemToUpdate)
+    axios({
+        method: 'PUT',
+        url: `/item/${itemToUpdate.id}`
+    })
+    .then((response) => {
+        console.log('Purchased an item');
+        getItems();
+    })
+    .catch((error) => {
+        alert('Error in UPDATEing item in database: ', error);
+        console.log(error);
+    })
+  }
 
   const deleteItem = (idToDelete) => {
     axios({
@@ -39,36 +80,22 @@ function App() {
       });
   };
 
-    return (
-            <div className="App">
-              <Header />
-              {/* title */}
-              {/* Form */}
-              <ItemForm addItem={addItem} />
-              {/* title */}
-              {/* button */}
-              <main>
-              {/* card list */}
-              <ItemList itemList={itemList} />
-            
-          
-        
-            <h1>Add an Item</h1>
-                <p>
-                    <span>Item: </span>
-                    <input type= 'text' placeholder='Item' style={{width: '250px'}}/>
-                </p>
-                <p>
-                    <span>Quantity: </span> 
-                    <input type="number" placeholder='#' style={{width:'50px'}}/>
-                    <span>Unit: </span>
-                    <input type='text' placeholder='lbs' style={{width:'125px'}}/>
-                </p>
-                <ShoppingButton />
-                <h2>Shopping List</h2>
-            </main>
-        </div>
-    )
+  return (
+    <div className="App">
+      <Header />
+      {/* title */}
+      {/* Form */}
+      <ItemForm addItem={addItem} />
+      {/* title */}
+      {/* button */}
+      <main>
+        <p>Under Construction...</p>
+        <ShoppingButton />
+      </main>
+      {/* card list */}
+      <ItemList itemList={itemList} purchaseItem={purchaseItem} />
+    </div>
+  );
 }
 
 export default App;

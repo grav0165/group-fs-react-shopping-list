@@ -22,12 +22,12 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
     const item = req.body;
     const sqlQuery = 
-    `INSERT INTO shoppinglist (name, quantity, unit)
-    VALUES ($1 $2 $3);`;
+    `INSERT INTO shoppinglist ("name", "quantity", "unit")
+    VALUES ($1, $2, $3);`;
     pool.query(sqlQuery, [item.name, item.quantity, item.unit])
     .then((result) => {
         // console logging result of POST request
-        console.log(`Added creature to the database`, creature);
+        console.log(`Added creature to the database`, item);
         res.sendStatus(201);
     })
     .catch((error) => {
@@ -38,14 +38,14 @@ router.post('/', (req, res) => {
 })
 
 // PUT router
-router.put('/', (req,res) => {
+router.put('/:id', (req,res) => {
     console.log('Inside of updating an item 🧘‍♀️')
     let itemToUpdate = req.params.id;
     const sqlQuery = `
     UPDATE "shoppinglist"
-    SET "purchased"=$2
+    SET "purchased"=true
     WHERE "id"=$1;`;
-    pool.query(sqlQuery, [itemToUpdate, !purchased])
+    pool.query(sqlQuery, [itemToUpdate])
     .then(result => {
         res.sendStatus(200);
     })
