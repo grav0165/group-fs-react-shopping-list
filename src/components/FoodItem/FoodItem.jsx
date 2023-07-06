@@ -1,7 +1,7 @@
 // import { useState } from "react";
 import "./FoodItem.css";
 
-function Item({ item }) {
+function FoodItem(props) {
 //   const [buy, setBuy] = useState(false);
 //   const [remove, setRemove] = useState(true);
 
@@ -16,27 +16,14 @@ function Item({ item }) {
 
   return (
     <li className="item">
-      <h5>{item.name}</h5>
+      <h5>{props.item.name}</h5>
       <div className="item-amount">
-        <p className="item-quantity">{item.quantity}</p>
-        <span className="item-unit">{item.unit}</span>
+        <p className="item-quantity">{props.item.quantity} <span className="item-unit">{props.item.unit}</span></p>
       </div>
-      {/* <div className="btn">
-        <button
-          className={item.purchased === true ? "buyBtn" : "transparent"}
-          onClick={handleButton}
-        >
-          Buy
-        </button>
-        <button
-          className={item.purchased === false ? "removeBtn" : "transparent"}
-          onClick={handleButton}
-        >
-          Remove
-        </button>
-      </div> */}
+      <button> Buy </button>
+        <button>Remove</button>
     </li>
   );
 }
 
-export default Item;
+export default FoodItem;
