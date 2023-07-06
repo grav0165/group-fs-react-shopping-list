@@ -40,20 +40,19 @@ function App() {
   };
 
     return (
-        <div className="App">
-            <Header />
+            <div className="App">
+              <Header />
+              {/* title */}
+              {/* Form */}
+              <ItemForm addItem={addItem} />
+              {/* title */}
+              {/* button */}
+              <main>
+              {/* card list */}
+              <ItemList itemList={itemList} />
             
-            {/* GET content */}
-
-            {/* POST content */}
-            <ItemForm 
-            addItem={addItem}
-            />
-
-            {/* PUT content */}
-
-            {/* DELETE content */}
-            <main>
+          
+        
             <h1>Add an Item</h1>
                 <p>
                     <span>Item: </span>
@@ -69,8 +68,7 @@ function App() {
                 <h2>Shopping List</h2>
             </main>
         </div>
-    )cd 
-    
+    )
 }
 
 export default App;
