@@ -11,6 +11,22 @@ import './App.css';
 
 
 function App() {
+    // arrow function - POST route that collects data from ItemForm
+    const addItem = (newShoppingItem) => {
+        axios({
+            method: 'POST',
+            url: '/item',
+            data: newShoppingItem
+        })
+        .then(response => {
+            //call GET route function here!!
+        })
+        .catch(error => {
+            alert('Error POSTing new item to database from addItem: ', error)
+            console.log(error);
+        })
+    }
+
     return (
         <div className="App">
             <Header />
@@ -18,7 +34,9 @@ function App() {
             {/* GET content */}
 
             {/* POST content */}
-            <ItemForm />
+            <ItemForm 
+            addItem={addItem}
+            />
 
             {/* PUT content */}
 
