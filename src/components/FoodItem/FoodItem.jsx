@@ -22,7 +22,7 @@ function Item({ item }) {
         <p className="item-quantity">{item.quantity}</p>
         <span className="item-unit">{item.unit}</span>
       </div>
-      <div className="btn">
+      {/* <div className="btn">
         <button
           className={item.purchased === true ? "buyBtn" : "transparent"}
           onClick={handleButton}
@@ -35,7 +35,7 @@ function Item({ item }) {
         >
           Remove
         </button>
-      </div>
+      </div> */}
     </li>
   );
 }
