@@ -38,12 +38,22 @@ router.post('/', (req, res) => {
 })
 
 // PUT router
-// router.put('/', (req,res) => {
-//     console.log('Inside of updating an item 🧘‍♀️')
-//     let itemToUpdate = req.params.id;
-//     const sqlQuery = `
-//     UPDATE "shoppinglist"
-//     SET "purchased"=$2`
-// })
+router.put('/', (req,res) => {
+    console.log('Inside of updating an item 🧘‍♀️')
+    let itemToUpdate = req.params.id;
+    const sqlQuery = `
+    UPDATE "shoppinglist"
+    SET "purchased"=$2
+    WHERE "id"=$1;`;
+    pool.query(sqlQuery, [itemToUpdate, !purchased])
+    .then(result => {
+        res.sendStatus(200);
+    })
+    .catch(error => {
+        console.log('Error in updating task ', error);
+        res.sendStatus(500);
+    })
+
+})
 
 module.exports = router;
