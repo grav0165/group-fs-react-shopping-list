@@ -1,10 +1,10 @@
 import React from 'react';
 import './Header.css';
 
-function Header() {
+function Header(props) {
     return (
         <header className="banner-header">
-            <h1>My Shopping List</h1>
+            <h1>{props.title}</h1>
         </header>
     );
 }
