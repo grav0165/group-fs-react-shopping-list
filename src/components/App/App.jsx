@@ -58,8 +58,19 @@ function App() {
 
             {/* DELETE content */}
             <main>
-                <p>Under Construction...</p>
+            <h1>Add an Item</h1>
+                <p>
+                    <span>Item: </span>
+                    <input type= 'text' placeholder='Item' style={{width: '250px'}}/>
+                </p>
+                <p>
+                    <span>Quantity: </span> 
+                    <input type="number" placeholder='#' style={{width:'50px'}}/>
+                    <span>Unit: </span>
+                    <input type='text' placeholder='lbs' style={{width:'125px'}}/>
+                </p>
                 <ShoppingButton />
+                <h2>Shopping List</h2>
             </main>
         </div>
     );
