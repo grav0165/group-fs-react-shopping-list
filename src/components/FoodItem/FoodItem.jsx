@@ -6,34 +6,61 @@ import withReactContent from "sweetalert2-react-content";
 function FoodItem(props) {
   // SweetAlert
   const MySwal = withReactContent(Swal);
-  
+
   // handle SweetAlert
-  const handleAlert = () => {
+  const handleDeleteAlert = () => {
     MySwal.fire({
-      title: 'Do you want to confirm action?',
+      title: "Do you want to confirm remove?",
       showDenyButton: true,
-      confirmButtonText: 'Yes',
-      denyButtonText: 'No',
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
     }).then((result) => {
       if (result.isConfirmed) {
-        MySwal.fire('Success')
+        MySwal.fire("Success");
       } else if (result.isDenied) {
-        MySwal.fire('Cancelled')
+        MySwal.fire("Cancelled");
       }
-    })
+    });
   };
 
   const handleUpdate = () => {
-    console.log("Purchase Button clicked");
-    props.purchaseItem({
-      id: props.item.id,
+    // SweetAlert
+    MySwal.fire({
+      title: "Do you want to confirm buy?",
+      showDenyButton: true,
+      confirmButtonText: "Yes",
+      denyButtonText: "No",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // handleUPDATE
+        props.purchaseItem({
+          id: props.item.id,
+        });
+        console.log(props.item.id);
+
+        MySwal.fire("Success");
+      } else if (result.isDenied) {
+        MySwal.fire("Cancelled");
+      }
     });
-    handleAlert()
-    console.log(props.item.id);
+    console.log("Purchase Button clicked");
   };
 
   const handleDelete = () => {
-    handleAlert()
+   // SweetAlert
+   MySwal.fire({
+    title: "Do you want to confirm remove?",
+    showDenyButton: true,
+    confirmButtonText: "Yes",
+    denyButtonText: "No",
+  }).then((result) => {
+    if (result.isConfirmed) {   
+    // handleDELETE 
+      MySwal.fire("Success");
+    } else if (result.isDenied) {
+      MySwal.fire("Cancelled");
+    }
+  });
     console.log("Delete Button clicked");
   };
 
@@ -50,10 +77,16 @@ function FoodItem(props) {
       </>
     );
   } else {
-    cardStatus = <span>Purchased<p><Button className="btn btn-danger" onClick={handleDelete}
-    >
-      Remove
-    </Button></p></span>
+    cardStatus = (
+      <span>
+        Purchased
+        <p>
+          <Button className="btn btn-danger" onClick={handleDelete}>
+            Remove
+          </Button>
+        </p>
+      </span>
+    );
   }
 
   return (
