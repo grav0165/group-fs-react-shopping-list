@@ -83,17 +83,15 @@ function App() {
   return (
     <div className="App">
       <Header />
-      {/* title */}
-      {/* Form */}
-      <ItemForm addItem={addItem} />
-      {/* title */}
-      {/* button */}
       <main>
-        <p>Under Construction...</p>
+      <h2 className="title"> Add An Item</h2>
+      <ItemForm addItem={addItem} />
+      
+      <h2 className="title">Shopping List</h2>
         <ShoppingButton />
-      </main>
-      {/* card list */}
+        </main>
       <ItemList itemList={itemList} purchaseItem={purchaseItem} />
+      
     </div>
   );
 }

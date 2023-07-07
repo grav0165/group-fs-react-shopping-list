@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./Item.css";
+import '../ItemList/ItemList.css'
+import Button from 'react-bootstrap/Button';
 
 function FoodItem(props) {
 
@@ -18,21 +18,21 @@ function FoodItem(props) {
 
 
   return (
-    <li className="item">
-      <h5>{props.item.name}</h5>
-      <div className="item-amount">
-        <p className="item-quantity">{props.item.quantity}</p>
-        <span className="item-unit">{props.item.unit}</span>
-      </div>
-      <div className="btn">
-        <button onClick={handleUpdate}
+    <li >
+      <h5 className="card-title">{props.item.name}</h5>
+      <div className="card-body">
+      
+        <p className="item-quantity">{props.item.quantity} <span className="item-unit">{props.item.unit}</span></p>
+    
+        <Button className='btn btn-success' onClick={handleUpdate}
         >
           Buy
-        </button>
-        <button onClick={handleDelete}
+        </Button>
+        <Button className="btn btn-danger" onClick={handleDelete}
         >
           Remove
-        </button>
+        </Button>
+
       </div>
     </li>
   );
