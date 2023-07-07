@@ -27,7 +27,6 @@ function App() {
       });
   };
 
-
   // useEffect
   useEffect(() => {
     getItems();
@@ -50,65 +49,89 @@ function App() {
       });
   };
 
+  // update item
   const purchaseItem = (itemToUpdate) => {
-    console.log(itemToUpdate)
+    console.log(itemToUpdate);
     axios({
-        method: 'PUT',
-        url: `/item/${itemToUpdate.id}`
+      method: "PUT",
+      url: `/item/${itemToUpdate.id}`,
     })
-    .then((response) => {
-        console.log('Purchased an item');
+      .then((response) => {
+        console.log("Purchased an item");
         getItems();
-    })
-    .catch((error) => {
-        alert('Error in UPDATEing item in database: ', error);
+      })
+      .catch((error) => {
+        alert("Error in UPDATEing item in database: ", error);
         console.log(error);
-    })
-  }
+      });
+  };
 
+  // reset all items
   const resetItems = () => {
-    console.log('Inside of reset items')
+    console.log("Inside of reset items");
     axios({
-      method: 'PUT',
-      url: `/itemReset/`
+      method: "PUT",
+      url: `/itemReset/`,
     })
-    .then((response) => {
-      console.log('Resetting all purchases')
-      getItems();
-    })
-    .catch(error => {
-    alert('Error in UPDATEing items in database: ', error);
-    console.log(error);})
-  }
+      .then((response) => {
+        console.log("Resetting all purchases");
+        getItems();
+      })
+      .catch((error) => {
+        alert("Error in UPDATEing items in database: ", error);
+        console.log(error);
+      });
+  };
 
-  const deleteItem = (idToDelete) => {
-    console.log('in deleteItem function!', idToDelete.id);
+  // clear all items
+  const clearItems = () => {
+    console.log("Inside of clear items");
     axios({
-    method: "DELETE",
-    url: `/item/${idToDelete.id}`,
+      method: "DELETE",
+      url: `/itemClear/`,
     })
-    .then((response) => {
+      .then((response) => {
+        console.log("Clearing all items");
+        getItems();
+      })
+      .catch((error) => {
+        alert("Error in clearing all items in database: ", error);
+        console.log(error);
+      });
+  };
+
+  // delete item
+  const deleteItem = (idToDelete) => {
+    console.log("in deleteItem function!", idToDelete.id);
+    axios({
+      method: "DELETE",
+      url: `/item/${idToDelete.id}`,
+    })
+      .then((response) => {
         console.log("Deleted an item");
-        getItems()
-    })
-    .catch((error) => {
+        getItems();
+      })
+      .catch((error) => {
         console.log("Error in DELETE request: ", error);
         alert("Error in deleting an item");
-    });
-};
+      });
+  };
 
   return (
     <div className="App">
       <Header />
       <main>
-      <h2 className="title"> Add An Item</h2>
-      <ItemForm addItem={addItem} />
-      
-      <h2 className="title">Shopping List</h2>
-        <ShoppingButton resetItems={resetItems}/>
-        </main>
-      <ItemList itemList={itemList} purchaseItem={purchaseItem} deleteItem={deleteItem}/>
-      
+        <h2 className="title"> Add An Item</h2>
+        <ItemForm addItem={addItem} />
+
+        <h2 className="title">Shopping List</h2>
+        <ShoppingButton resetItems={resetItems} clearItems={clearItems} />
+      </main>
+      <ItemList
+        itemList={itemList}
+        purchaseItem={purchaseItem}
+        deleteItem={deleteItem}
+      />
     </div>
   );
 }
