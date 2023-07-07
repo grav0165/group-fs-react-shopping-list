@@ -28,7 +28,10 @@ function FoodItem(props) {
       </Button>
     </>
   } else {
-    cardStatus = "Purchased"
+    cardStatus = <span>Purchased<p><Button className="btn btn-danger" onClick={handleDelete}
+    >
+      Remove
+    </Button></p></span>
   }
 
 

@@ -1,8 +1,10 @@
 import Button from "react-bootstrap/Button";
 
-function ShoppingButton() {
+function ShoppingButton({resetItems}) {
   const handleReset = () => {
     console.log("Reset button clicked");
+    resetItems()
+    console.log('Items reset')
   };
 
   const handleClear = () => {
