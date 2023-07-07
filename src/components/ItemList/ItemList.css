@@ -1,0 +1,41 @@
+.card-body {
+      margin: 5px 20px;
+      text-align: center;
+      vertical-align: -webkit-baseline-middle;
+}
+
+.card-title {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+.item-quantity {
+    font-size: 1.5em;
+}
+
+.btn {
+    margin: 5px;
+}
+
+ul {
+display: flex;
+flex-direction: row;
+flex-wrap: wrap;
+justify-content: center;
+list-style-type: none; /* Remove bullets */
+}
+
+li {
+    border: 2px solid rgb(56, 53, 53);
+    margin: 40px;
+padding: 20px 10px;
+    min-width: 200px;
+min-height: 200px;
+      max-width: 250px;
+      max-height: 250px;
+}
+
+label {
+    font-size: 1.5em;
+    margin: 10px;
+}

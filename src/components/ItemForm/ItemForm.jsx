@@ -1,4 +1,6 @@
 import{useState} from 'react';
+import Button from 'react-bootstrap/Button';
+import '../ItemList/ItemList.css'
 
 function ItemForm(props){
 
@@ -29,25 +31,25 @@ return(
         <label>
             Item
         </label>
-            <input type="text" 
+            <input type="text" placeholder='Name'
                 onChange={(event) => setNewItem(event.target.value)}
                 value={newItem}
                 />
         <label>
             Quantity
         </label>
-            <input type="text"
+            <input type="text" placeholder='Number'
                 onChange={(event) => setNewQuantity(event.target.value)}
                 value={newQuantity}
                 />
         <label>
             Unit
         </label>
-            <input type="text" 
+            <input type="text" placeholder='Unit'
                 onChange={(event) => setNewUnit(event.target.value)}
                 value={newUnit}
                 />
-        <button type='submit'>Save</button>
+        <Button type='submit' className="btn btn-primary">Save</Button>
     </form>
 )
 
