@@ -56,4 +56,6 @@ router.put('/:id', (req,res) => {
 
 })
 
+// DELETE router 
+
 module.exports = router;

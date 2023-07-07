@@ -23,7 +23,9 @@
     "react-bootstrap": "^2.8.0",
     "react-bootstrap-sweetalert": "^5.2.0",
     "react-dom": "^18.2.0",
-    "react-scripts": "^5.0.1"
+    "react-scripts": "^5.0.1",
+    "sweetalert2": "^11.7.12",
+    "sweetalert2-react-content": "^5.0.7"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
