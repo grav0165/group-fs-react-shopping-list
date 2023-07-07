@@ -27,6 +27,7 @@ function App() {
       });
   };
 
+
   // useEffect
   useEffect(() => {
     getItems();
@@ -83,11 +84,11 @@ function App() {
   const deleteItem = (idToDelete) => {
     axios({
     method: "DELETE",
-    url: `/item/`,
+    url: `/item/${idToDelete.id}`,
     })
     .then((response) => {
         console.log("Deleted an item");
-        // getItems()
+        getItems()
     })
     .catch((error) => {
         console.log("Error in DELETE request: ", error);

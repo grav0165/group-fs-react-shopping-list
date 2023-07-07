@@ -56,4 +56,19 @@ router.put('/:id', (req,res) => {
 
 })
 
+// DELETE router
+// router.delete('/:id', (req,res) => {
+//     console.log('deleted an item!');
+//     let idToDelete= req.params.id
+//     let queryText=
+//     `DELETE from "shoppinglist" WHERE "id"= $1;`;
+//     pool.query(queryText,[idToDelete])
+//     }).then ((results) => {
+//     console.log('deleted items!', results);
+//     res.sendStatus(200);
+//     }).catch((error) => {
+//     console.log('error with deleteing items', error);
+//     res.sendStatus(500);
+//     }) // end DELETE router
+
 module.exports = router;

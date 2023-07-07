@@ -11,9 +11,13 @@ function FoodItem(props) {
     console.log(props.item.id)
   };
 
-  const handleDelete = () => {
-    console.log('Delete Button clicked');
-  }
+  // const handleDelete = (event) => {
+  //   event.preventDefault();
+  //   console.log('Delete Button clicked');
+  //   // delete item
+  //   console.log('idToDelete is:', props.deletedItem);
+  //   props.deletedItem.remove();
+  // }
 
   let cardStatus
   if (!props.item.purchased) {
