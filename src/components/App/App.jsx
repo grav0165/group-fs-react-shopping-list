@@ -65,6 +65,21 @@ function App() {
     })
   }
 
+  const resetItems = () => {
+    console.log('Inside of reset items')
+    axios({
+      method: 'PUT',
+      url: `/itemReset/`
+    })
+    .then((response) => {
+      console.log('Resetting all purchases')
+      getItems();
+    })
+    .catch(error => {
+    alert('Error in UPDATEing items in database: ', error);
+    console.log(error);})
+  }
+
   const deleteItem = (idToDelete) => {
     axios({
       method: "DELETE",
@@ -88,7 +103,7 @@ function App() {
       <ItemForm addItem={addItem} />
       
       <h2 className="title">Shopping List</h2>
-        <ShoppingButton />
+        <ShoppingButton resetItems={resetItems}/>
         </main>
       <ItemList itemList={itemList} purchaseItem={purchaseItem} />
       
