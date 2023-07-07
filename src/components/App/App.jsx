@@ -27,6 +27,7 @@ function App() {
       });
   };
 
+
   // useEffect
   useEffect(() => {
     getItems();
@@ -81,19 +82,20 @@ function App() {
   }
 
   const deleteItem = (idToDelete) => {
+    console.log('in delteItem function!', idToDelete.id);
     axios({
-      method: "DELETE",
-      url: `/item/`,
+    method: "DELETE",
+    url: `/item/${idToDelete.id}`,
     })
-      .then((response) => {
+    .then((response) => {
         console.log("Deleted an item");
-        // getItems()
-      })
-      .catch((error) => {
+        getItems()
+    })
+    .catch((error) => {
         console.log("Error in DELETE request: ", error);
         alert("Error in deleting an item");
-      });
-  };
+    });
+};
 
   return (
     <div className="App">
@@ -105,7 +107,7 @@ function App() {
       <h2 className="title">Shopping List</h2>
         <ShoppingButton resetItems={resetItems}/>
         </main>
-      <ItemList itemList={itemList} purchaseItem={purchaseItem} />
+      <ItemList itemList={itemList} purchaseItem={purchaseItem} deleteItem={deleteItem}/>
       
     </div>
   );
