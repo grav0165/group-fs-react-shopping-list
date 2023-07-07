@@ -7,22 +7,6 @@ function FoodItem(props) {
   // SweetAlert
   const MySwal = withReactContent(Swal);
 
-  // handle SweetAlert
-  const handleDeleteAlert = () => {
-    MySwal.fire({
-      title: "Do you want to confirm remove?",
-      showDenyButton: true,
-      confirmButtonText: "Yes",
-      denyButtonText: "No",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        MySwal.fire("Success");
-      } else if (result.isDenied) {
-        MySwal.fire("Cancelled");
-      }
-    });
-  };
-
   const handleUpdate = () => {
     // SweetAlert
     MySwal.fire({
@@ -48,14 +32,18 @@ function FoodItem(props) {
 
   const handleDelete = () => {
    // SweetAlert
-   MySwal.fire({
+  MySwal.fire({
     title: "Do you want to confirm remove?",
     showDenyButton: true,
     confirmButtonText: "Yes",
     denyButtonText: "No",
   }).then((result) => {
     if (result.isConfirmed) {   
-    // handleDELETE 
+      // handleDELETE
+      props.deleteItem({
+        id: props.item.id,
+      });
+      console.log(props.item.id);
       MySwal.fire("Success");
     } else if (result.isDenied) {
       MySwal.fire("Cancelled");

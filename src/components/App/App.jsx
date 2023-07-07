@@ -82,6 +82,7 @@ function App() {
   }
 
   const deleteItem = (idToDelete) => {
+    console.log('in delteItem function!', idToDelete.id);
     axios({
     method: "DELETE",
     url: `/item/${idToDelete.id}`,
@@ -106,7 +107,7 @@ function App() {
       <h2 className="title">Shopping List</h2>
         <ShoppingButton resetItems={resetItems}/>
         </main>
-      <ItemList itemList={itemList} purchaseItem={purchaseItem} />
+      <ItemList itemList={itemList} purchaseItem={purchaseItem} deleteItem={deleteItem}/>
       
     </div>
   );
