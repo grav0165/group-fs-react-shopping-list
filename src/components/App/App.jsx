@@ -82,7 +82,7 @@ function App() {
   }
 
   const deleteItem = (idToDelete) => {
-    console.log('in delteItem function!', idToDelete.id);
+    console.log('in deleteItem function!', idToDelete.id);
     axios({
     method: "DELETE",
     url: `/item/${idToDelete.id}`,
