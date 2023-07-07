@@ -3,3 +3,9 @@
   text-align: center;
   padding: 0.25em;
 }
+
+.header {
+  font-size: 3.5em;
+  font-family: 'Oswald';
+  font-weight: 200px;
+}
