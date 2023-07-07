@@ -4,7 +4,7 @@ const pool = require('../modules/pool');
 
 // GET route for /item
 router.get('/', (req, res) => {
-    const sqlQuery = `SELECT * FROM shoppinglist ORDER BY name DESC;`;
+    const sqlQuery = `SELECT * FROM shoppinglist ORDER BY purchased, name ASC;`;
     pool.query(sqlQuery)
     .then((result) => {
         // console logging out result received from server
